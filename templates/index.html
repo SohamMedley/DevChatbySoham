@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DevChat by Soham – Your specialized coding assistant.">
+  <title>DevChat by Soham</title>
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <!-- Animated Background -->
+  <div class="animated-background">
+      <div class="gradient-sphere sphere-1"></div>
+      <div class="gradient-sphere sphere-2"></div>
+      <div class="gradient-sphere sphere-3"></div>
+  </div>
+
+  <!-- Header -->
+  <header>
+      <div class="container">
+          <div class="logo">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="DevChat Logo">
+                  <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              DevChat <span class="badge">by Soham</span>
+          </div>
+          <nav>
+              <ul>
+                  <li><a href="#" class="active">Chat</a></li>
+                  <li><a href="#tools">Tools</a></li>
+                  <li><a href="#about">About</a></li>
+              </ul>
+          </nav>
+      </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+      <div class="container">
+          <h1 class="gradient-text">DevChat: Your Coding Assistant</h1>
+          
+          <!-- Chat Interface -->
+          <div class="chat-container">
+              <div class="chat-header">
+                  <div class="chat-title">
+                      <i class="fas fa-code" aria-hidden="true"></i> DevChat Coding Assistant
+                  </div>
+                  <div class="chat-actions">
+                      <button id="clear-chat-btn" class="icon-btn" title="Clear chat">
+                          <i class="fas fa-trash-alt"></i>
+                      </button>
+                      <button id="save-chat-btn" class="icon-btn" title="Save chat">
+                          <i class="fas fa-save"></i>
+                      </button>
+                  </div>
+              </div>
+              <div id="chat-log" class="chat-messages">
+                  <div class="message assistant-message">
+                      <div class="message-content">
+                          <p>Hello! I'm DevChat, your coding assistant. How can I help you with your code today?</p>
+                      </div>
+                      <div class="message-time">Just now</div>
+                  </div>
+              </div>
+              <div class="chat-input">
+                  <textarea id="user-input" placeholder="Type your coding question or share your code... (Press Enter to send, Shift+Enter for new line)" rows="1"></textarea>
+                  <button id="send-button">
+                      <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                  </button>
+              </div>
+          </div>
+          
+          <!-- Tools Section -->
+          <section id="tools" class="tools-grid-section">
+              <h2 class="section-title">Powerful Coding Tools</h2>
+              <div class="tools-grid">
+                  <div class="tool-card">
+                      <i class="fas fa-code fa-2x" aria-hidden="true"></i>
+                      <h3>Smart Code Suggestions</h3>
+                      <p>Get intelligent code completions and debugging hints.</p>
+                  </div>
+                  <div class="tool-card">
+                      <i class="fas fa-history fa-2x" aria-hidden="true"></i>
+                      <h3>Chat History</h3>
+                      <p>Save and retrieve your coding sessions anytime.</p>
+                  </div>
+                  <div class="tool-card">
+                      <i class="fas fa-terminal fa-2x" aria-hidden="true"></i>
+                      <h3>Code Snippets</h3>
+                      <p>Easily copy code examples and snippets for your projects.</p>
+                  </div>
+                  <div class="tool-card">
+                      <i class="fas fa-laptop-code fa-2x" aria-hidden="true"></i>
+                      <h3>Responsive Design</h3>
+                      <p>Enjoy a perfect coding assistant experience on any device.</p>
+                  </div>
+              </div>
+          </section>
+          
+          <!-- About Section -->
+          <section id="about" class="content-section">
+              <h2>About DevChat</h2>
+              <p>DevChat by Soham is a specialized coding assistant designed to help you with debugging, code generation, and explanation of programming concepts. Whether you’re stuck on a bug or need a quick code snippet, DevChat is here to assist you.</p>
+              <ul>
+                  <li>Built with <span class="highlight-text">Python</span> and <span class="highlight-text">Flask</span></li>
+                  <li>Powered by <span class="highlight-text">Google's Gemini AI</span></li>
+                  <li>Optimized for coding support and code explanations</li>
+                  <li>Created by <span class="highlight-text">Soham</span></li>
+              </ul>
+          </section>
+      </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+      <p class="footer-text">© 2025 DevChat by Soham. All rights reserved.</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

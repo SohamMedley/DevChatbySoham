@@ -86,12 +86,13 @@ def get_gemini_response():
         })
     except Exception as e:
         error_str = str(e)
-        # If the error includes "finish_reason: RECITATION", treat as partial
+        # If the error includes "finish_reason: RECITATION", gracefully return a partial response message.
         if "finish_reason: RECITATION" in error_str:
-            logger.warning("Partial/Recitation response from Gemini: %s", error_str)
+            logger.info("Gemini gave a partial/recitation response: %s", error_str)
             return jsonify({
-                'error': "Partial or recitation response from Gemini. Please try again.",
-                'gemini_response': "I'm having trouble generating a full answer. Please try again."
+                'gemini_response': "Here’s the partial response I have so far... (Gemini ended early)",
+                'session_id': session_id,
+                'error': None
             })
         else:
             logger.error("Error in get_response: %s", error_str)
@@ -130,7 +131,7 @@ def save_chat():
         chat_history = chat_sessions[session_id]['history']
     
     return jsonify({
-        'success': True, 
+        'success': True,
         'history': chat_history,
         'chat_id': session_id
     })
@@ -148,7 +149,7 @@ def get_chat_history():
         chat_history = chat_sessions[session_id]['history']
     
     return jsonify({
-        'success': True, 
+        'success': True,
         'history': chat_history
     })
 

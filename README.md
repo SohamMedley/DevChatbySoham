@@ -1,100 +1,107 @@
 # DevChat by Soham
 
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)  ![Flask](https://img.shields.io/badge/Flask-3.1.0-brightgreen) ![Gemini API](https://img.shields.io/badge/Gemini_API-Powered-orange)
+**DevChat** is a specialized coding assistant powered by Google's Gemini AI. Designed to help developers debug code, generate snippets, and explain programming concepts, DevChat provides an intuitive, chat-based interface that looks and feels like ChatGPT but with a focus on code.
 
-DevChat is a specialized coding assistant designed to help you with debugging, code generation, and explanation of programming concepts. Built with Python and Flask, and powered by Google's Gemini AI, DevChat offers a seamless and efficient coding support experience.
+![DevChat Banner](path/to/your/banner-image.png)
 
-**[Live Demo] https://devchatbysoham.onrender.com/
 ## Features
 
-* **Smart Code Suggestions:** Get intelligent code completions and debugging hints.
-* **Chat History:** Save and retrieve your coding sessions anytime.
-* **Code Snippets:** Easily copy code examples and snippets for your projects.
-* **Responsive Design:** Enjoy a perfect coding assistant experience on any device.
-* **Beautiful UI:** A modern and visually appealing interface designed to enhance your coding experience.
-* **Inline Code Highlighting:** Code is automatically highlighted for easy reading.
-* **Copy Code Buttons:** Easily copy code snippets with a single click.
-* **Regenerate Responses:** Regenerate Gemini responses for different results.
-* **Edit Prompts:** Edit your prompts directly in the chat interface.
+- **Interactive Chat Interface**: Engage in natural language conversations to ask coding questions.
+- **Smart Code Suggestions**: Receive intelligent code completions, debugging hints, and explanations.
+- **Syntax-Highlighted Code Blocks**: Beautiful, ChatGPT-style code blocks with syntax highlighting using Highlight.js.
+- **Copy Code Button**: Easily copy code snippets with a single click.
+- **Fullscreen Mode**: Toggle the chat interface to full screen for an enhanced mobile experience.
+- **Chat History & Export**: Save and retrieve your conversation history.
 
-## Screenshots
+## Tech Stack
 
-![Screenshot of DevChat Interface](path/to/your/screenshot.png) (Replace with a path or URL to your screenshot)
-
-## Technologies Used
-
-* **Backend:** Python, Flask
-* **AI Model:** Google's Gemini API
-* **Frontend:** HTML, CSS, JavaScript
-* **UI/UX:** Modern, responsive design with gradient effects and animated backgrounds.
-* **Code Highlighting:** Highlight.js
-* **Deployment:** Render.com
+- **Backend**: Python, Flask, Google Generative AI (Gemini)
+- **Frontend**: HTML, CSS, JavaScript, Highlight.js (Monokai Sublime theme), Font Awesome
+- **Deployment**: Render.com
 
 ## Installation
 
-1.  **Clone the repository:**
+Follow these steps to run DevChat locally:
 
-    ```bash
-    git clone [https://github.com/your-username/your-repo-name.git](https://github.com/your-username/your-repo-name.git)
-    cd your-repo-name
-    ```
+1. **Clone the repository**:
 
-2.  **Create a virtual environment (recommended):**
+   ```bash
+   git clone https://github.com/<your-username>/<your-repo>.git
+   cd <your-repo>
+Create a virtual environment (optional but recommended):
 
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On macOS/Linux
-    venv\Scripts\activate  # On Windows
-    ```
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate  # On Windows use: venv\Scripts\activate
+Install dependencies:
 
-3.  **Install dependencies:**
+bash
+Copy
+Edit
+pip install --upgrade pip
+pip install -r requirements.txt
+Set up your environment variable for the Gemini API key:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+On Windows (PowerShell):
 
-4.  **Set up environment variables:**
+powershell
+Copy
+Edit
+$env:GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+On macOS/Linux:
 
-    * Create a `.env` file in the root directory.
-    * Add your Gemini API key:
+bash
+Copy
+Edit
+export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"
+Run the application:
 
-    ```
-    GEMINI_API_KEY=YOUR_GEMINI_API_KEY
-    SECRET_KEY=YOUR_SECRET_KEY
-    ```
+bash
+Copy
+Edit
+python gemini_chatbot.py
+Open your browser at http://localhost:5000 to start chatting with DevChat.
 
-5.  **Run the application:**
+Deployment on Render
+To deploy DevChat on Render:
 
-    ```bash
-    python gemini_chatbot.py
-    ```
+Push your code to GitHub (ensure you have a requirements.txt at the root).
+Create a new Web Service on Render:
+Connect your GitHub repo.
+Set the Build Command to:
+bash
+Copy
+Edit
+pip install --upgrade pip && pip install -r requirements.txt
+Set the Start Command to:
+bash
+Copy
+Edit
+python gemini_chatbot.py
+Modify your app to bind to host='0.0.0.0' and use the port provided by Render:
+python
+Copy
+Edit
+if __name__ == '__main__':
+    import os
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
+Add your environment variable:
+In Render’s dashboard, add an environment variable with:
+Name: GEMINI_API_KEY
+Value: YOUR_GEMINI_API_KEY
+Deploy the service and test your deployed URL.
+UI & Customization
+Fullscreen Toggle: Use the fullscreen button on the chat header to expand the chat window for a better mobile experience.
+Syntax Highlighting: Code blocks are rendered using Highlight.js with the Monokai Sublime theme. You can change the theme by editing the link in index.html.
+Copy Code: Each code block has an icon-only “copy code” button that turns into a checkmark when the code is successfully copied.
+Contributing
+Contributions are welcome! If you have ideas or improvements, feel free to open an issue or submit a pull request.
 
-6.  **Or for production use gunicorn:**
+License
+This project is licensed under the MIT License.
 
-    ```bash
-    gunicorn gemini_chatbot:app
-    ```
-
-## Deployment
-
-This application is designed to be easily deployed on Render.com. Simply connect your GitHub repository to Render, and it will automatically build and deploy your application.
-
-Make sure to set the `GEMINI_API_KEY` and `SECRET_KEY` environment variables in your Render.com dashboard.
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue.
-
-## License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
-
-## Author
-
-* Soham
-
-## Acknowledgements
-
-* Powered by Google's Gemini AI.
-* Inspired by the need for a seamless coding assistant.
-* Thank you to the Flask and Highlight.js communities.
+Contact
+For any questions or feedback, feel free to contact Soham (businessbysoham@gmail.com)

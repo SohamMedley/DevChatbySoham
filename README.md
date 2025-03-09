@@ -34,7 +34,7 @@ Follow these steps to run DevChat locally:
 python -m venv venv
 # On Windows use: venv\Scripts\activate
 ```
-
+```
 3. **Install dependencies**:
 ```bash
 pip install --upgrade pip

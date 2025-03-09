@@ -37,7 +37,7 @@ Follow these steps to run DevChat locally:
 python -m venv venv
 source venv/bin/activate  # On Windows use: venv\Scripts\activate```
 
-3.**Install dependencies:***
+3.**Install dependencies:**
 
 ```bash
  

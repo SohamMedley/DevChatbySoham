@@ -28,10 +28,10 @@ Follow these steps to run DevChat locally:
    cd <your-repo> 
 ```
 
-2. **Create a virtual environment (optional but recommended)**:
-```bash
+2. **Create a virtual environment**:
+   ```bash
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate 
+# On Windows use: venv\Scripts\activate
 ```
 
 3. **Install dependencies**:

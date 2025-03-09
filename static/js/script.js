@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const chatLog = document.getElementById('chat-log');
     const clearChatBtn = document.getElementById('clear-chat-btn');
     const saveChatBtn = document.getElementById('save-chat-btn');
+    const fullscreenBtn = document.getElementById('fullscreen-btn'); // New button
 
     // Track last user message and last assistant message
     let lastUserMessage = '';
@@ -16,6 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
         this.style.height = (this.scrollHeight) + 'px';
         if (this.value === '') {
             this.style.height = 'auto';
+        }
+    });
+    
+    // Fullscreen toggle for chat container
+    fullscreenBtn.addEventListener('click', function() {
+        const chatContainer = document.querySelector('.chat-container');
+        chatContainer.classList.toggle('fullscreen');
+        // Toggle icon: if in fullscreen, show compress icon; otherwise, show expand icon.
+        if (chatContainer.classList.contains('fullscreen')) {
+            fullscreenBtn.innerHTML = '<i class="fas fa-compress"></i>';
+        } else {
+            fullscreenBtn.innerHTML = '<i class="fas fa-expand"></i>';
         }
     });
     
@@ -218,7 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>'
         );
         
-        // Convert bold text: **text** => <strong>text</strong>
+        // Convert bold text: **text** => <strong>$1</strong>
         message = message.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
         
         // Code blocks with language: ```python\n code... ```
@@ -238,10 +251,7 @@ document.addEventListener('DOMContentLoaded', function() {
             '<code>$1</code>'
         );
         
-        // IMPORTANT: We do NOT replace \n with <br> here.
-        // This preserves newlines inside code blocks exactly.
-        // (If you need line breaks outside code blocks, you can do a separate approach.)
-        
+        // Do NOT replace newline characters with <br> for code blocks.
         return message;
     }
 

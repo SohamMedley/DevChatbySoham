@@ -6,9 +6,15 @@
   <meta name="description" content="DevChat by Soham – Your specialized coding assistant.">
   <title>DevChat by Soham</title>
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+  
+  <!-- Main CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Highlight.js (Monokai Sublime Theme) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai-sublime.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 </head>
 <body>
   <!-- Animated Background -->
@@ -118,9 +124,20 @@
 
   <!-- Footer -->
   <footer>
-      <p class="footer-text">© 2025 DevChat by Soham. All rights reserved.</p>
+      <p class="footer-text">© 2025 DevChat by Soham, powered by Gemini. All rights reserved.</p>
   </footer>
 
+  <!-- Main JS -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  
+  <!-- Initialize Highlight.js after content loads -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Highlight any code blocks that might be pre-existing in the DOM
+      document.querySelectorAll('pre code').forEach((block) => {
+        hljs.highlightElement(block);
+      });
+    });
+  </script>
 </body>
 </html>

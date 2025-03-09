@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Add action buttons to this newly updated assistant message
         addAssistantActions(messageElem);
         
+        // Re-highlight new code blocks
+        highlightAllCodeBlocks(contentDiv);
+        
         // Keep track of the last assistant message
         lastAssistantElem = messageElem;
     }
@@ -100,14 +103,6 @@ document.addEventListener('DOMContentLoaded', function() {
         contentDiv.classList.add('message-content');
         contentDiv.innerHTML = formatMessage(message);
         
-        // For assistant messages, code blocks get copy buttons
-        if (sender === 'assistant') {
-            setTimeout(() => {
-                const codeBlocks = contentDiv.querySelectorAll('pre');
-                codeBlocks.forEach(addCopyButton);
-            }, 0);
-        }
-        
         const timeDiv = document.createElement('div');
         timeDiv.classList.add('message-time');
         timeDiv.textContent = getCurrentTime();
@@ -116,6 +111,15 @@ document.addEventListener('DOMContentLoaded', function() {
         messageDiv.appendChild(timeDiv);
         chatLog.appendChild(messageDiv);
         chatLog.scrollTop = chatLog.scrollHeight;
+        
+        // If it's an assistant message, highlight code + add copy buttons
+        if (sender === 'assistant') {
+            highlightAllCodeBlocks(contentDiv);
+            setTimeout(() => {
+                const codeBlocks = contentDiv.querySelectorAll('pre');
+                codeBlocks.forEach(addCopyButton);
+            }, 0);
+        }
         
         return isTemporary ? messageDiv : null;
     }
@@ -180,21 +184,23 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Add copy button to code blocks
+    // Add copy button to code blocks (icon-only version)
     function addCopyButton(codeBlock) {
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-btn';
-        copyBtn.textContent = 'Copy code'; // ChatGPT-like label
+        copyBtn.title = 'Copy code';
+        // Icon-only button
+        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
         
         copyBtn.addEventListener('click', function() {
             const codeElement = codeBlock.querySelector('code');
             if (codeElement) {
                 const code = codeElement.innerText;
                 navigator.clipboard.writeText(code).then(() => {
-                    copyBtn.textContent = 'Copied!';
+                    copyBtn.innerHTML = '<i class="fas fa-check"></i>';
                     copyBtn.classList.add('copied');
                     setTimeout(() => {
-                        copyBtn.textContent = 'Copy code';
+                        copyBtn.innerHTML = '<i class="fas fa-copy"></i>';
                         copyBtn.classList.remove('copied');
                     }, 2000);
                 });
@@ -203,8 +209,8 @@ document.addEventListener('DOMContentLoaded', function() {
         
         codeBlock.appendChild(copyBtn);
     }
-    
-    // Format message with markdown-like syntax
+
+    // Convert triple backticks to highlighted code blocks
     function formatMessage(message) {
         // Convert URLs to links
         message = message.replace(
@@ -215,7 +221,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Convert bold text: **text** => <strong>text</strong>
         message = message.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
         
-        // Convert code blocks (triple backticks)
+        // Code blocks with language: ```python\n code... ```
+        message = message.replace(
+            /```(\w+)[ \t]*\n([\s\S]*?)```/g,
+            '<pre><code class="language-$1">$2</code></pre>'
+        );
+        // Code blocks without specified language
         message = message.replace(
             /```([\s\S]*?)```/g,
             '<pre><code>$1</code></pre>'
@@ -227,10 +238,19 @@ document.addEventListener('DOMContentLoaded', function() {
             '<code>$1</code>'
         );
         
-        // Convert line breaks to <br>
-        message = message.replace(/\n/g, '<br>');
+        // IMPORTANT: We do NOT replace \n with <br> here.
+        // This preserves newlines inside code blocks exactly.
+        // (If you need line breaks outside code blocks, you can do a separate approach.)
         
         return message;
+    }
+
+    // Highlight all <code> blocks within a container using Highlight.js
+    function highlightAllCodeBlocks(container) {
+        const codeBlocks = container.querySelectorAll('pre code');
+        codeBlocks.forEach((block) => {
+            hljs.highlightElement(block);
+        });
     }
     
     // Get current time in HH:MM format
@@ -270,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `pychat-history-${new Date().toISOString().slice(0, 10)}.json`;
+                a.download = `devchat-history-${new Date().toISOString().slice(0, 10)}.json`;
                 document.body.appendChild(a);
                 a.click();
                 setTimeout(() => {

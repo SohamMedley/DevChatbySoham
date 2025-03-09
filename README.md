@@ -27,14 +27,13 @@ Follow these steps to run DevChat locally:
    git clone https://github.com/<your-username>/<your-repo>.git
    cd <your-repo> 
 ```
-```
 
 2. **Create a virtual environment**:
    ```bash
 python -m venv venv
 # On Windows use: venv\Scripts\activate
 ```
-```
+
 3. **Install dependencies**:
 ```bash
 pip install --upgrade pip
@@ -67,16 +66,19 @@ python gemini_chatbot.py
 (iii) Connect your GitHub repo.
 
 (iv) Set the Build Command to:
+
 ```bash
 pip install --upgrade pip && pip install -r requirements.txt 
 ```
 
 (v) Set the Start Command to:
+
 ```bash
 python gemini_chatbot.py 
 ```
 
 (vi) Modify your app to bind to host='0.0.0.0' and use the port provided by Render:
+
 ```python
 if __name__ == '__main__':
     import os

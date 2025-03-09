@@ -168,7 +168,8 @@ main {
   width: 100%;
   max-width: 800px;
   margin: 0 auto 3rem;
-  background: rgba(255, 255, 255, 0.05);
+  /* Updated background for better readability on mobile */
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(10px);
   border-radius: 15px;
   overflow: hidden;
@@ -178,7 +179,7 @@ main {
   height: 600px;
 }
 
-/* Fullscreen mode for chat container */
+/* Fullscreen mode: darker translucent background */
 .chat-container.fullscreen {
   position: fixed;
   top: 0;
@@ -188,6 +189,8 @@ main {
   margin: 0;
   border-radius: 0;
   z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  border: none;
 }
 
 .chat-header {
@@ -350,15 +353,14 @@ pre {
   border-radius: 8px;
   margin: 1rem 0;
   position: relative;
-  background: none;      /* Let highlight.js style the code background */
-  white-space: pre-wrap; /* preserve newlines and indentation */
+  background: none;
+  white-space: pre-wrap;
   word-break: break-word;
 }
 
 code {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.9rem;
-  /* Rely on parent <pre> for wrapping */
 }
 
 /* Icon-only "Copy code" button inside code blocks */

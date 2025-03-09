@@ -20,68 +20,50 @@
 - **Deployment**: Render.com
 
 ## Installation
-
 Follow these steps to run DevChat locally:
 
 1. **Clone the repository**:
-
    ```bash
    git clone https://github.com/<your-username>/<your-repo>.git
    cd <your-repo> ```
 
 2. **Create a virtual environment (optional but recommended)**:
-
 ```bash
- 
- 
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate```
+source venv/bin/activate  # On Windows use: venv\Scripts\activate ```
 
-3.**Install dependencies:**
-
+3. **Install dependencies:**
 ```bash
- 
- 
 pip install --upgrade pip
-pip install -r requirements.txt
-4.**Set up your environment variable for the Gemini API key:**
+pip install -r requirements.txt ```
 
+4. **Set up your environment variable for the Gemini API key:**
 On Windows (PowerShell):
-
-powershell
- 
  ```bash
-$env:GEMINI_API_KEY="YOUR_GEMINI_API_KEY"```
+$env:GEMINI_API_KEY="YOUR_GEMINI_API_KEY" ```
+
 On macOS/Linux:
-
-
- 
 ```bash 
-export GEMINI_API_KEY="YOUR_GEMINI_API_KEY"```
+export GEMINI_API_KEY="YOUR_GEMINI_API_KEY" ```
+
 5.**Run the application:**
-
 ```bash
- 
- 
-python gemini_chatbot.py```
-6.**Open your browser at http://localhost:5000 to start chatting with DevChat.**
+python gemini_chatbot.py ```
 
+6.**Open your browser at http://localhost:5000 to start chatting with DevChat.**
 **Deployment on Render**
 *To deploy DevChat on Render:*
-
 (i) Push your code to GitHub (ensure you have a requirements.txt at the root).
 (ii) Create a new Web Service on Render:
 (iii) Connect your GitHub repo.
 (iv) Set the Build Command to:
 ```bash
- 
- 
-pip install --upgrade pip && pip install -r requirements.txt```
+pip install --upgrade pip && pip install -r requirements.txt ```
+
 (v) Set the Start Command to:
 ```bash
- 
- 
-python gemini_chatbot.py```
+python gemini_chatbot.py ```
+
 (vi) Modify your app to bind to host='0.0.0.0' and use the port provided by Render:
 ```python
  

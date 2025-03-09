@@ -63,6 +63,10 @@
                       <button id="save-chat-btn" class="icon-btn" title="Save chat">
                           <i class="fas fa-save"></i>
                       </button>
+                      <!-- New Full Screen Button -->
+                      <button id="fullscreen-btn" class="icon-btn" title="Full screen chat">
+                          <i class="fas fa-expand"></i>
+                      </button>
                   </div>
               </div>
               <div id="chat-log" class="chat-messages">
@@ -127,13 +131,11 @@
       <p class="footer-text">© 2025 DevChat by Soham, powered by Gemini. All rights reserved.</p>
   </footer>
 
-  <!-- Main JS -->
   <script src="{{ url_for('static', filename='js/script.js') }}"></script>
   
   <!-- Initialize Highlight.js after content loads -->
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-      // Highlight any code blocks that might be pre-existing in the DOM
       document.querySelectorAll('pre code').forEach((block) => {
         hljs.highlightElement(block);
       });

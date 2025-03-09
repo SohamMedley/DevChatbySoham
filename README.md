@@ -23,13 +23,13 @@
 Follow these steps to run DevChat locally:
 
 1. **Clone the repository**:
-   ```bash
+```bash
    git clone https://github.com/<your-username>/<your-repo>.git
    cd <your-repo> 
 ```
 
 2. **Create a virtual environment**:
-   ```bash
+```bash
 python -m venv venv
 # On Windows use: venv\Scripts\activate
 ```

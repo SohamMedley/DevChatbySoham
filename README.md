@@ -2,7 +2,7 @@
 
 **DevChat** is a specialized coding assistant powered by Google's Gemini AI. Designed to help developers debug code, generate snippets, and explain programming concepts, DevChat provides an intuitive, chat-based interface that looks and feels like ChatGPT but with a focus on code.
 
-![DevChat Banner](path/to/your/banner-image.png)
+![DevChat Banner](images/banner-image.png)
 
 ## Features
 

@@ -9,7 +9,7 @@
 - **Interactive Chat Interface**: Engage in natural language conversations to ask coding questions.
 - **Smart Code Suggestions**: Receive intelligent code completions, debugging hints, and explanations.
 - **Syntax-Highlighted Code Blocks**: Beautiful, ChatGPT-style code blocks with syntax highlighting using Highlight.js.
-- **  Code Button**: Easily copy code snippets with a single click.
+- **Code Button**: Easily copy code snippets with a single click.
 - **Fullscreen Mode**: Toggle the chat interface to full screen for an enhanced mobile experience.
 - **Chat History & Export**: Save and retrieve your conversation history.
 

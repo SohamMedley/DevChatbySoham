@@ -26,7 +26,6 @@ body {
   line-height: 1.5;
 }
 
-
 /* Animated Background */
 .animated-background {
   position: fixed;
@@ -177,6 +176,18 @@ main {
   display: flex;
   flex-direction: column;
   height: 600px;
+}
+
+/* Fullscreen mode for chat container */
+.chat-container.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  border-radius: 0;
+  z-index: 1000;
 }
 
 .chat-header {
@@ -331,25 +342,25 @@ main {
   transform: scale(1.05);
 }
 
-/* Let highlight.js handle <pre><code> coloring. 
+/* Let highlight.js handle <pre><code> coloring.
    Use pre-wrap so line breaks + indentation appear as typed,
-   and also allow wrapping for long lines. */
-/* Key code block styling changes */
+   and allow wrapping for long lines. */
 pre {
   padding: 1rem;
   border-radius: 8px;
   margin: 1rem 0;
   position: relative;
-  background: none;       /* Let highlight.js style the code background */
-  white-space: pre-wrap;  /* preserve newlines + indentation, wrap long lines */
-  word-break: break-word; /* allow long tokens to wrap if needed */
+  background: none;      /* Let highlight.js style the code background */
+  white-space: pre-wrap; /* preserve newlines and indentation */
+  word-break: break-word;
 }
 
 code {
   font-family: 'Courier New', Courier, monospace;
   font-size: 0.9rem;
-  /* No 'white-space' override here, we rely on the parent <pre> to handle wrapping. */
+  /* Rely on parent <pre> for wrapping */
 }
+
 /* Icon-only "Copy code" button inside code blocks */
 .copy-btn {
   position: absolute;
